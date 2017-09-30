@@ -1,4 +1,4 @@
-package com.landiao.right.support;
+package com.landiao.security.support;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
-import com.landiao.right.entity.User;
+import com.landiao.security.entity.User;
 
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 	

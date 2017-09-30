@@ -1,30 +1,33 @@
-package com.landiao.right.entity;
+package com.landiao.security.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
-public class SystemRole {
+public class User {
 	
-	@Id
+    @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    
+
     private String name;
+
+    private String password;
     
-    @ManyToOne(fetch = FetchType.LAZY)  
-    @JoinColumn(name = "user_id", nullable = false)  
-    private User user;//角色对应的用户实体
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")  
+    private Set<SystemRole> systemRole = new HashSet<SystemRole>(0);// 所对应的角色集合
     
     private Date createTime;
-    
+
 	public Integer getId() {
 		return id;
 	}
@@ -41,12 +44,21 @@ public class SystemRole {
 		this.name = name;
 	}
 
-	public User getUser() {
-		return user;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	public Set<SystemRole> getSystemRole() {
+		return systemRole;
+	}
+
+	public void setSystemRole(Set<SystemRole> systemRole) {
+		this.systemRole = systemRole;
 	}
 
 	public Date getCreateTime() {
@@ -56,6 +68,5 @@ public class SystemRole {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	
-	
+
 }

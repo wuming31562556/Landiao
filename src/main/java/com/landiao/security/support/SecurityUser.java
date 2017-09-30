@@ -1,4 +1,4 @@
-package com.landiao.right.support;
+package com.landiao.security.support;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,8 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.landiao.right.entity.SystemRole;
-import com.landiao.right.entity.User;
+import com.landiao.security.entity.SystemRole;
+import com.landiao.security.entity.User;
 
 public class SecurityUser extends User implements UserDetails {
 	

@@ -1,4 +1,4 @@
-package com.landiao.right.config;
+package com.landiao.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +12,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import com.landiao.right.support.CustomUserDetailsService;
-import com.landiao.right.support.LoginSuccessHandler;
+import com.landiao.security.support.CustomUserDetailsService;
+import com.landiao.security.support.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

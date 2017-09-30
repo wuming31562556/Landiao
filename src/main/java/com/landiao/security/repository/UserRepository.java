@@ -1,9 +1,9 @@
-package com.landiao.right.repository;
+package com.landiao.security.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.landiao.right.entity.User;
+import com.landiao.security.entity.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {

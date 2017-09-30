@@ -1,4 +1,4 @@
-package com.landiao.right.entity;
+package com.landiao.security.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
