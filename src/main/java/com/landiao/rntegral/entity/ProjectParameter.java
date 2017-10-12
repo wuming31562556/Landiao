@@ -8,17 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Department {
-	
+public class ProjectParameter {
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 	
-	private String name;
+	private Integer projectId; //项目ID
 	
-	private Integer managerId; //部门经理
-	
-	private String description;
+	private Integer parameterOptionId; //参数值ID （对应系数）
 	
 	private Date createDate;
 
@@ -30,28 +28,20 @@ public class Department {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getProjectId() {
+		return projectId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
-	public Integer getManagerId() {
-		return managerId;
+	public Integer getParameterOptionId() {
+		return parameterOptionId;
 	}
 
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setParameterOptionId(Integer parameterOptionId) {
+		this.parameterOptionId = parameterOptionId;
 	}
 
 	public Date getCreateDate() {

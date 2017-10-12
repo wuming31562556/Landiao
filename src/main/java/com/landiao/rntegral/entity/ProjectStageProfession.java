@@ -8,17 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Department {
-	
+public class ProjectStageProfession {
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 	
-	private String name;
+	private Integer projectStageId; //项目阶段ID
 	
-	private Integer managerId; //部门经理
-	
-	private String description;
+	private Integer professionId; //专业 ( 方案、土建、植物、水电、其它 )
 	
 	private Date createDate;
 
@@ -30,28 +28,20 @@ public class Department {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getProjectStageId() {
+		return projectStageId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProjectStageId(Integer projectStageId) {
+		this.projectStageId = projectStageId;
 	}
 
-	public Integer getManagerId() {
-		return managerId;
+	public Integer getProfessionId() {
+		return professionId;
 	}
 
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setProfessionId(Integer professionId) {
+		this.professionId = professionId;
 	}
 
 	public Date getCreateDate() {
@@ -61,5 +51,5 @@ public class Department {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+
 }

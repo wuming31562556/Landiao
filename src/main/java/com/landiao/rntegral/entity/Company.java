@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Department {
+public class Company {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -16,9 +16,7 @@ public class Department {
 	
 	private String name;
 	
-	private Integer managerId; //部门经理
-	
-	private String description;
+	private Double annualBonusBudget; //年度预算奖金总金额
 	
 	private Date createDate;
 
@@ -38,20 +36,12 @@ public class Department {
 		this.name = name;
 	}
 
-	public Integer getManagerId() {
-		return managerId;
+	public Double getAnnualBonusBudget() {
+		return annualBonusBudget;
 	}
 
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAnnualBonusBudget(Double annualBonusBudget) {
+		this.annualBonusBudget = annualBonusBudget;
 	}
 
 	public Date getCreateDate() {

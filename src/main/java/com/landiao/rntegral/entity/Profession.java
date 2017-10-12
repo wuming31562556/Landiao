@@ -8,17 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Department {
-	
+public class Profession {
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 	
 	private String name;
-	
-	private Integer managerId; //部门经理
-	
-	private String description;
 	
 	private Date createDate;
 
@@ -36,22 +32,6 @@ public class Department {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Integer getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Date getCreateDate() {
