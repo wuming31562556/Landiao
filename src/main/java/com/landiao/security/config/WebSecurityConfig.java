@@ -11,14 +11,20 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.landiao.security.support.CustomUserDetailsService;
 import com.landiao.security.support.LoginSuccessHandler;
+import com.landiao.security.support.MySecurityFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) // 开启security注解
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired  
+    private MySecurityFilter mySecurityFilter;
 	
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
@@ -31,18 +37,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+		.addFilterBefore(mySecurityFilter, FilterSecurityInterceptor.class)
 		.authorizeRequests()
 		.antMatchers("/").permitAll()
-		.anyRequest().authenticated() // 其他所有资源都需要认证，登陆后访问
-		.antMatchers("/index").hasAuthority("ADMIN") // 登陆后之后拥有“ADMIN”权限才可以访问/index方法，否则系统会出现“403”权限不足的提示
+		//.anyRequest().authenticated() // 其他所有资源都需要认证，登陆后访问
+		//.antMatchers("/index").hasAuthority("ADMIN") // 登陆后之后拥有“ADMIN”权限才可以访问/index方法，否则系统会出现“403”权限不足的提示
 		.and()
 		.formLogin()
-		.loginPage("/login")// 指定登录页是”/login”
-		.defaultSuccessUrl("/index")
-		.permitAll().successHandler(loginSuccessHandler()) // 登录成功后可使用loginSuccessHandler()存储用户信息，可选。
+		.loginPage("/")// 指定登录页是”/”
+		.loginProcessingUrl("/login")
+		.usernameParameter("username")
+        .passwordParameter("password")
+		.successHandler(loginSuccessHandler())
 		.and()
-		.logout().logoutSuccessUrl("/") // 退出登录后的默认网址是”/”
-		.permitAll()
+		.logout()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutSuccessUrl("/") // 退出登录后的默认网址是”/”
 		.invalidateHttpSession(true)
 		.and()
 		.rememberMe()// 登录后记住用户，下次自动登录,数据库中必须存在名为persistent_logins的表
@@ -53,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 	    web
 	       .ignoring()
-	       .antMatchers("/static/**");
+	       .antMatchers("/static/**", "/css/**", "/js/**","/images/**", "/webjars/**", "**/favicon.ico", "/fonts/**");
 	}
 
 	@Autowired

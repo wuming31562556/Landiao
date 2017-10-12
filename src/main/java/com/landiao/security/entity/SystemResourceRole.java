@@ -14,7 +14,7 @@ public class SystemResourceRole {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 	
-    private String roleId;
+    private Integer roleId;
       
     private String resourceId;
       
@@ -28,11 +28,11 @@ public class SystemResourceRole {
 		this.id = id;
 	}
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 

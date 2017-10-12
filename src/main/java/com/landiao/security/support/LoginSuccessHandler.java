@@ -18,12 +18,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 			Authentication authentication) throws IOException, ServletException {
 		// 获得授权后可得到用户信息 可使用SUserService进行数据库操作
 		User userDetails = (User) authentication.getPrincipal();
+		System.out.println(authentication.getAuthorities());
 		/* Set<SysRole> roles = userDetails.getSysRoles(); */
 		// 输出登录提示信息
 		System.out.println("管理员 " + userDetails.getName() + " 登录");
 
 		System.out.println("IP :" + getIpAddress(request));
-
+		response.sendRedirect("/index");
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 

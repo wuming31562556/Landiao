@@ -1,0 +1,137 @@
+
+parameter_name table
+	id
+	name ( 项目规模 项目类型 难度 质量及效率 专业积分 返工率 )
+
+parameter_vlaue table
+	id
+	name_id
+	value
+	coefficient 系数
+	
+parameter_name 与 parameter_vlaue 是一对多的关系
+
+stage table 阶段维护表
+	id
+	name ( 概念、方案、扩初、施工图、后期、其它 )
+
+company table
+	name
+	total_money 年度预算奖金总金额
+
+department table 部门表
+	id
+	name 部门名称
+	department_manager 部门经理
+	description 描述
+
+employee table 员工表
+	id
+	user_name 用户名
+	name 姓名
+	job_number 员工号
+	phone 电话
+	system_role 系统角色 ( 设计师 项目经理 部门经理 运营 行政 )
+	job_grade 职级 ( 七级 四档 )
+	professional 专业 ( 方案 土建 植物 水电 其它 )
+	department_id 部门
+	daily_wage 时薪
+
+project table 项目表
+	id
+	name 项目名称
+	star_target 星标
+	description 描述
+	project_manager 项目经理
+	status 项目状态 ( 0 未开始 1 进行中 2 已结束 )
+	target_integral 目标积分
+	
+project_parameter table 项目参数表
+	id
+	project_id 	项目ID
+	parameter_vlaue_id 	参数值ID （对应系数）
+
+project_stage table 项目阶段表
+	id
+	project_id 项目ID
+	stage_id 阶段ID
+	
+project_stage_professional table 项目阶段专业表
+	id
+	project_stage_id  项目阶段ID
+	professional_name 专业 ( 方案、土建、植物、水电、其它 )
+	
+project_stage_professional_employee table 项目阶段专业人员表
+	id
+	project_stage_professional_id 项目阶段专业ID
+	employee_id 员工ID
+	integral_performance 绩效积分
+	comment 备注
+	
+	
+work_content table 工作内容表
+	id
+	stage_id 阶段ID
+	
+work_content_category table 工作内容类别表
+	id
+	categroy_name 工作类别
+	work_content_id 工作内容ID
+
+work_content_category_content table 工作内容类型内容表
+	id
+	content_name 工作内容
+	work_content_category_id 工作内容类别ID
+
+employee_work_content table 员工工作内容表
+	id
+	date 日期
+	employee_id 员工ID
+	project_id 项目ID
+	stage_id 阶段ID
+	professional_name 专业
+	work_content_category_id 工作内容类别ID
+	work_content_category_content_id 工作内容类型内容ID
+	hour 工时
+
+employee_work_content_evaluation table 员工工作内容评价表
+	id
+	employee_work_content_id 员工工作内容ID
+	evaluation_parameter_id 评价项ID
+	evaluation_value 评价值(星级)
+
+evaluation_parameter table 评价项
+	id
+	parameter_name
+
+direct_cost table 直接费用表
+	id
+	project_id 项目ID
+	employee_id 员工ID
+	money 费用
+	date 日期
+	comment 备注
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+
+
+	

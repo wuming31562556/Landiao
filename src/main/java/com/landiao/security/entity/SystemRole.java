@@ -3,12 +3,9 @@ package com.landiao.security.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class SystemRole {
@@ -19,12 +16,11 @@ public class SystemRole {
     
     private String name;
     
-    @ManyToOne(fetch = FetchType.LAZY)  
-    @JoinColumn(name = "user_id", nullable = false)  
-    private User user;//角色对应的用户实体
+    private Integer userId;
     
     private Date createTime;
-    
+	
+
 	public Integer getId() {
 		return id;
 	}
@@ -40,13 +36,13 @@ public class SystemRole {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public User getUser() {
-		return user;
+	
+	public Integer getUserId() {
+		return userId;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
+	
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public Date getCreateTime() {
